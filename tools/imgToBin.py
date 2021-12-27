@@ -25,8 +25,6 @@ def main():
         json.dump( img.info, f)
         f.write("\n")
 
-    return 0
-
     as_bytes = img.convert("RGBA").tobytes()
 
     outname = os.path.splitext(args.input)[0] + ".bin"

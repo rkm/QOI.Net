@@ -1,6 +1,6 @@
-#include <iostream>
 #include <fstream>
-#include <vector>
+#include <iostream>
+#include <string>
 
 #define QOI_IMPLEMENTATION
 #include "qoi.h"
@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    auto path = argv[1];
+    std::string path(argv[1]);
     auto width = (unsigned int) atoi(argv[2]);
     auto height = (unsigned int) atoi(argv[3]);
     auto channels = (unsigned int) atoi(argv[4]);
@@ -50,9 +50,8 @@ int main(int argc, char* argv[])
 
     delete[] buffer;
 
-    // write out
-
-    std::ofstream out_file("out.qoi", std::ios::binary);
+    auto idx = path.find_last_of(".");
+    std::ofstream out_file(path.substr(0, idx) + ".qoi", std::ios::binary);
     out_file.write((char*)encoded_image, encoded_length);
     out_file.close();
 
