@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <Authors>rkm</Authors>
+        <Description>https://github.com/rkm/QOI.Net</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/rkm/QOI.Net</RepositoryUrl>
+        <Version>1.0.0</Version>
+        <Platforms>x64</Platforms>
+        <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+        <LanguageVersion>8.0</LanguageVersion>
+        <Nullable>enable</Nullable>
+        <SatelliteResourceLanguages>none</SatelliteResourceLanguages>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+</Project>
