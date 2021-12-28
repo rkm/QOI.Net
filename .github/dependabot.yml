@@ -1,0 +1,12 @@
+---
+version: 2
+
+updates:
+  - package-ecosystem: nuget
+    directory: QOI.Net/
+    schedule:
+      interval: daily
+  - package-ecosystem: nuget
+    directory: QOI.Net.Tests/
+    schedule:
+      interval: daily
