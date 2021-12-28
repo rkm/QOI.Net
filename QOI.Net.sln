@@ -12,23 +12,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{A52EE6C6-670
 		img\scotland-edinburgh-castle-day.bin = img\scotland-edinburgh-castle-day.bin
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76700758-02F8-4C77-A6EF-41DCBC8D43FC}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Debug|x64.ActiveCfg = Debug|x64
+		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Debug|x64.Build.0 = Debug|x64
+		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Release|x64.ActiveCfg = Release|x64
+		{82CA44A7-4EC5-447B-BD95-5872D012736A}.Release|x64.Build.0 = Release|x64
+		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Debug|x64.ActiveCfg = Debug|x64
+		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Debug|x64.Build.0 = Debug|x64
+		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Release|x64.ActiveCfg = Release|x64
+		{11EC311C-3ABB-4C9C-9025-9119533E3549}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A52EE6C6-670E-4E72-9784-E16EFC22557E} = {76700758-02F8-4C77-A6EF-41DCBC8D43FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E161875-2315-4C9F-A45F-9464E45C92D1}

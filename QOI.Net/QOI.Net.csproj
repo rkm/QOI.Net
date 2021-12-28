@@ -1,14 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Runtime" Version="4.3.1" />
-  </ItemGroup>
-
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Platforms>x64;x64</Platforms>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Runtime" Version="4.3.1" />
+	</ItemGroup>
 </Project>

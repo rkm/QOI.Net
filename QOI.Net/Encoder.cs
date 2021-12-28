@@ -2,6 +2,8 @@
 {
     public static class Encoder
     {
+        private static int PixelHash(Pixel p) => (p.r * 3 + p.g * 5 + p.b * 7 + p.a * 11) % 64;
+
         public static ReadOnlySpan<byte> Encode(
             ReadOnlySpan<byte> input,
             uint width,
@@ -135,7 +137,6 @@
                     }
 
                     previous = pixel;
-
                 }
             }
 
@@ -144,7 +145,5 @@
 
             return buffer;
         }
-
-        private static int PixelHash(Pixel p) => (p.r * 3 + p.g * 5 + p.b * 7 + p.a * 11) % 64;
     }
 }
