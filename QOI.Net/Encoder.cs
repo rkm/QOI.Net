@@ -47,7 +47,7 @@
 
             Pixel pixel = default;
             byte run = 0;
-            var finalPixelIdx = buffer.Length - channels;
+            var finalPixelIdx = input.Length - channels;
 
             unsafe
             {
