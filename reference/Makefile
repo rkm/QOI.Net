@@ -4,7 +4,7 @@ TARGETS = encode decode
 .PHONY: all
 all: $(TARGETS)
 
-.PHONE: clean
+.PHONY: clean
 clean:
 	rm $(TARGETS)
 
