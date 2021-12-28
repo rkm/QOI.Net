@@ -1,0 +1,103 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.1.0"
+    hooks:
+      # General
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+      # Python
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: requirements-txt-fixer
+  # General
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+  - repo: https://github.com/rkm/pre-commit-nocommit
+    rev: "v1.0.0"
+    hooks:
+      - id: nocommit
+        exclude: .pre-commit-config.yaml
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.1.0"
+    hooks:
+      - id: codespell
+        args:
+          [
+            --ignore-words,
+            .meta/codespell-ignores,
+            --exclude-file,
+            .meta/codespell-excludes,
+            --ignore-regex,
+            '\Whttps?://\S*',
+          ]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.5.1"
+    hooks:
+      - id: prettier
+        args: [--config, .meta/prettierrc.yml]
+  - repo: https://github.com/adrienverge/yamllint
+    rev: "v1.26.3"
+    hooks:
+      - id: yamllint
+        args: [-c, .meta/yamllint.yaml]
+  # Python
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: "v1.9.0"
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-mock-methods
+      - id: python-use-type-annotations
+      - id: python-no-log-warn
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: "v2.6.0"
+    hooks:
+      - id: reorder-python-imports
+        args: [--py36-plus]
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: "v2.2.1"
+    hooks:
+      - id: add-trailing-comma
+        args: [--py36-plus]
+  - repo: https://github.com/asottile/pyupgrade
+    rev: "v2.30.0"
+    hooks:
+      - id: pyupgrade
+        args: [--py36-plus]
+  - repo: https://github.com/asottile/yesqa
+    rev: "v1.3.0"
+    hooks:
+      - id: yesqa
+        additional_dependencies: [pep8-naming]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v0.930"
+    hooks:
+      - id: mypy
+        args: [--config-file, .meta/mypy.ini]
+  - repo: https://github.com/psf/black
+    rev: "21.12b0"
+    hooks:
+      - id: black
+        language_version: python38
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: "3.9.2"
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          [flake8-bugbear, flake8-assert-msg, pep8-naming]
+        args: [--config, .meta/flake8.conf]
+  - repo: https://github.com/dotnet/format
+    rev: "v5.1.225507" # Specify a tag or sha here, or run "pre-commit autoupdate"
+    hooks:
+      - id: dotnet-format
