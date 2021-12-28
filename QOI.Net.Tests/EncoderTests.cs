@@ -37,7 +37,7 @@ namespace QOI.Net.Tests
             var output = Encoder.Encode(input, 1, 1, 4, 1, out int outLen);
 
             Assert.AreEqual(expected.Length, outLen);
-            Assert.AreEqual(expected, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(expected, output[..outLen].ToArray());
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace QOI.Net.Tests
             var output = Encoder.Encode(input, 1, 1, 4, 1, out int outLen);
 
             Assert.AreEqual(expected.Length, outLen);
-            Assert.AreEqual(expected, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(expected, output[..outLen].ToArray());
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace QOI.Net.Tests
             var output = Encoder.Encode(input, 1, 1, 3, 1, out int outLen);
 
             Assert.AreEqual(expected.Length, outLen);
-            Assert.AreEqual(expected, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(expected, output[..outLen].ToArray());
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace QOI.Net.Tests
             var output = Encoder.Encode(input, 1, 1, 3, 1, out int outLen);
 
             Assert.AreEqual(expected.Length, outLen);
-            Assert.AreEqual(expected, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(expected, output[..outLen].ToArray());
         }
 
         [Test]
@@ -119,7 +119,7 @@ namespace QOI.Net.Tests
 
             var output = Encoder.Encode(input, 730, 487, 4, 1, out int outLen);
 
-            Assert.AreEqual(reference, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(reference, output[..outLen].ToArray());
         }
 
         [Test]
@@ -131,7 +131,7 @@ namespace QOI.Net.Tests
 
             var output = Encoder.Encode(input, 730, 487, 4, 1, out int outLen);
 
-            Assert.AreEqual(reference, output.Slice(0, outLen).ToArray());
+            Assert.AreEqual(reference, output[..outLen].ToArray());
         }
     }
 }
