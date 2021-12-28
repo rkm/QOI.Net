@@ -2,8 +2,6 @@
 {
     public static class Encoder
     {
-        private static int PixelHash(Pixel p) => (p.r * 3 + p.g * 5 + p.b * 7 + p.a * 11) % 64;
-
         public static ReadOnlySpan<byte> Encode(
             ReadOnlySpan<byte> input,
             uint width,
@@ -13,31 +11,33 @@
             out int outLen
         )
         {
+            // TODO(rkm 2021-12-28) Check other arguments
+
             if (channels != 3 && channels != 4)
                 throw new ArgumentOutOfRangeException(nameof(channels), "Only 3 (RGB) or 4 (RGBA) channels are supported.");
 
-            if (colourSpace != Constants.QOI_SRGB && colourSpace != Constants.QOI_LINEAR)
+            if (colourSpace != Util.QOI_SRGB && colourSpace != Util.QOI_LINEAR)
                 throw new ArgumentOutOfRangeException(nameof(colourSpace), "Only 0 (SRGB) or 1 (Linear) colour spaces are supported.");
 
             bool haveAlpha = (channels == 4);
-            var maxSize = width * height * (channels + 1) + Constants.HEADER_SIZE + Constants.PADDING_LENGTH;
-            var buffer = new byte[maxSize];
+            var maxSize = width * height * (channels + 1) + Util.HEADER_SIZE + Util.PADDING_LENGTH;
+            var output = new byte[maxSize];
 
             var outCursor = 0;
 
             void WriteInt(uint value)
             {
-                buffer[outCursor++] = (byte)((value & 0xff000000) >> 24);
-                buffer[outCursor++] = (byte)((value & 0x00ff0000) >> 16);
-                buffer[outCursor++] = (byte)((value & 0x0000ff00) >> 8);
-                buffer[outCursor++] = (byte)((value & 0x000000ff) >> 0);
+                output[outCursor++] = (byte)((value & 0xff000000) >> 24);
+                output[outCursor++] = (byte)((value & 0x00ff0000) >> 16);
+                output[outCursor++] = (byte)((value & 0x0000ff00) >> 8);
+                output[outCursor++] = (byte)((value & 0x000000ff) >> 0);
             }
 
-            WriteInt(Constants.QOI_MAGIC);
+            WriteInt(Util.QOI_MAGIC);
             WriteInt(width);
             WriteInt(height);
-            buffer[outCursor++] = (byte)channels;
-            buffer[outCursor++] = (byte)colourSpace;
+            output[outCursor++] = (byte)channels;
+            output[outCursor++] = (byte)colourSpace;
 
             Pixel previous = default;
             previous.r = 0;
@@ -51,25 +51,25 @@
 
             unsafe
             {
-                var index = stackalloc Pixel[Constants.SEEN_BUFFER_LENGTH];
+                var index = stackalloc Pixel[Util.SEEN_BUFFER_LENGTH];
 
-                for (var cursor = 0; cursor < input.Length; cursor += channels)
+                for (var inCursor = 0; inCursor < input.Length; inCursor += channels)
                 {
-                    pixel.r = input[cursor + 0];
-                    pixel.g = input[cursor + 1];
-                    pixel.b = input[cursor + 2];
+                    pixel.r = input[inCursor + 0];
+                    pixel.g = input[inCursor + 1];
+                    pixel.b = input[inCursor + 2];
 
                     if (channels == 4)
-                        pixel.a = input[cursor + 3];
+                        pixel.a = input[inCursor + 3];
                     else
                         pixel.a = previous.a;
 
                     if (pixel.value == previous.value)
                     {
                         run++;
-                        if (run == Constants.MAX_RUN_LENGTH || cursor == finalPixelIdx)
+                        if (run == Util.MAX_RUN_LENGTH || inCursor == finalPixelIdx)
                         {
-                            buffer[outCursor++] = (byte)(Constants.QOI_OP_RUN | (run - 1));
+                            output[outCursor++] = (byte)(Util.QOI_OP_RUN | (run - 1));
                             run = 0;
                         }
                     }
@@ -77,15 +77,15 @@
                     {
                         if (run > 0)
                         {
-                            buffer[outCursor++] = (byte)(Constants.QOI_OP_RUN | (run - 1));
+                            output[outCursor++] = (byte)(Util.QOI_OP_RUN | (run - 1));
                             run = 0;
                         }
 
-                        var hash = PixelHash(pixel);
+                        var hash = Util.PixelHash(pixel);
 
                         if (index[hash].value == pixel.value)
                         {
-                            buffer[outCursor++] = (byte)(Constants.QOI_OP_INDEX | hash);
+                            output[outCursor++] = (byte)(Util.QOI_OP_INDEX | hash);
                         }
                         else
                         {
@@ -106,7 +106,7 @@
                                     vb > -3 && vb < 2
                                 )
                                 {
-                                    buffer[outCursor++] = (byte)(Constants.QOI_OP_DIFF | (vr + 2) << 4 | (vg + 2) << 2 | (vb + 2));
+                                    output[outCursor++] = (byte)(Util.QOI_OP_DIFF | (vr + 2) << 4 | (vg + 2) << 2 | (vb + 2));
                                 }
                                 else if (
                                     vg_r > -9 && vg_r < 8 &&
@@ -114,24 +114,24 @@
                                     vg_b > -9 && vg_b < 8
                                 )
                                 {
-                                    buffer[outCursor++] = (byte)(Constants.QOI_OP_LUMA | (vg + 32));
-                                    buffer[outCursor++] = (byte)((vg_r + 8) << 4 | (vg_b + 8));
+                                    output[outCursor++] = (byte)(Util.QOI_OP_LUMA | (vg + 32));
+                                    output[outCursor++] = (byte)((vg_r + 8) << 4 | (vg_b + 8));
                                 }
                                 else
                                 {
-                                    buffer[outCursor++] = Constants.QOI_OP_RGB;
-                                    buffer[outCursor++] = pixel.r;
-                                    buffer[outCursor++] = pixel.g;
-                                    buffer[outCursor++] = pixel.b;
+                                    output[outCursor++] = Util.QOI_OP_RGB;
+                                    output[outCursor++] = pixel.r;
+                                    output[outCursor++] = pixel.g;
+                                    output[outCursor++] = pixel.b;
                                 }
                             }
                             else
                             {
-                                buffer[outCursor++] = Constants.QOI_OP_RGBA;
-                                buffer[outCursor++] = pixel.r;
-                                buffer[outCursor++] = pixel.g;
-                                buffer[outCursor++] = pixel.b;
-                                buffer[outCursor++] = pixel.a;
+                                output[outCursor++] = Util.QOI_OP_RGBA;
+                                output[outCursor++] = pixel.r;
+                                output[outCursor++] = pixel.g;
+                                output[outCursor++] = pixel.b;
+                                output[outCursor++] = pixel.a;
                             }
                         }
                     }
@@ -140,10 +140,10 @@
                 }
             }
 
-            buffer[outCursor++] = 1;
+            output[outCursor++] = 1;
             outLen = outCursor;
 
-            return buffer;
+            return output;
         }
     }
 }

@@ -111,11 +111,24 @@ namespace QOI.Net.Tests
         }
 
         [Test]
+        public void RandBytes()
+        {
+            var reference = File.ReadAllBytes("randbytes.qoi");
+
+            var input = File.ReadAllBytes("randbytes.bin");
+
+            var output = Encoder.Encode(input, 730, 487, 4, 1, out int outLen);
+
+            Assert.AreEqual(reference, output.Slice(0, outLen).ToArray());
+        }
+
+        [Test]
         public void EdinburghCastle()
         {
             var reference = File.ReadAllBytes("scotland-edinburgh-castle-day.qoi");
 
             var input = File.ReadAllBytes("scotland-edinburgh-castle-day.bin");
+
             var output = Encoder.Encode(input, 730, 487, 4, 1, out int outLen);
 
             Assert.AreEqual(reference, output.Slice(0, outLen).ToArray());

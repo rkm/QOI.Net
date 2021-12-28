@@ -5,11 +5,14 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QOI.Net", "QOI.Net\QOI.Net.csproj", "{82CA44A7-4EC5-447B-BD95-5872D012736A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QOI.Net.Tests", "QOI.Net.Tests\QOI.Net.Tests.csproj", "{11EC311C-3ABB-4C9C-9025-9119533E3549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QOI.Net.Tests", "QOI.Net.Tests\QOI.Net.Tests.csproj", "{11EC311C-3ABB-4C9C-9025-9119533E3549}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{A52EE6C6-670E-4E72-9784-E16EFC22557E}"
 	ProjectSection(SolutionItems) = preProject
+		img\randbytes.bin = img\randbytes.bin
+		img\randbytes.qoi = img\randbytes.qoi
 		img\scotland-edinburgh-castle-day.bin = img\scotland-edinburgh-castle-day.bin
+		img\scotland-edinburgh-castle-day.qoi = img\scotland-edinburgh-castle-day.qoi
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76700758-02F8-4C77-A6EF-41DCBC8D43FC}"
