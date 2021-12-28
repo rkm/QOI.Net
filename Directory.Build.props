@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Platforms>x64</Platforms>
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-		<Platforms>x64</Platforms>
 		<SatelliteResourceLanguages>none</SatelliteResourceLanguages>
-		<TargetFramework>net6.0</TargetFramework>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 </Project>
