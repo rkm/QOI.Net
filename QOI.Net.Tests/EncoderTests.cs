@@ -113,11 +113,12 @@ namespace QOI.Net.Tests
         [Test]
         public void EdinburghCastle()
         {
-            Assert.Inconclusive("needs fixed");
+            var reference = File.ReadAllBytes("scotland-edinburgh-castle-day.qoi");
 
             var input = File.ReadAllBytes("scotland-edinburgh-castle-day.bin");
             var output = Encoder.Encode(input, 730, 487, 4, 1, out int outLen);
-            Assert.AreEqual(858158, outLen);
+
+            Assert.AreEqual(reference, output.Slice(0, outLen).ToArray());
         }
     }
 }
