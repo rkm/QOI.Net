@@ -114,9 +114,9 @@ namespace QOI.Net.Tests
         [Test]
         public void RandBytes()
         {
-            var reference = File.ReadAllBytes("randbytes.bin");
+            var reference = File.ReadAllBytes("img/randbytes.bin");
 
-            var input = File.ReadAllBytes("randbytes.qoi");
+            var input = File.ReadAllBytes("img/randbytes.qoi");
 
             var output = QOIDecoder.Decode(input, out var width, out var height, out var channels, out var colourSpace);
 
@@ -130,9 +130,9 @@ namespace QOI.Net.Tests
         [Test]
         public void EdinburghCastle()
         {
-            var reference = File.ReadAllBytes("scotland-edinburgh-castle-day.bin");
+            var reference = File.ReadAllBytes("img/scotland-edinburgh-castle-day.bin");
 
-            var input = File.ReadAllBytes("scotland-edinburgh-castle-day.qoi");
+            var input = File.ReadAllBytes("img/scotland-edinburgh-castle-day.qoi");
 
             var output = QOIDecoder.Decode(input, out var width, out var height, out var channels, out var colourSpace);
 
