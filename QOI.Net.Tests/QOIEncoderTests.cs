@@ -124,5 +124,28 @@ namespace QOI.Net.Tests
             Assert.AreEqual(reference.Length, outLen);
             Assert.AreEqual(reference, output[..outLen].ToArray());
         }
+
+        [Test]
+        public void EncodeQOITestImages()
+        {
+            foreach (var testImage in QOITestImage.TestImages)
+            {
+                var reference = File.ReadAllBytes($"{testImage.Name}.qoi");
+
+                var input = File.ReadAllBytes($"{testImage.Name}.bin");
+
+                var output = QOIEncoder.Encode(
+                    input,
+                    testImage.Width,
+                    testImage.Height,
+                    testImage.Channels,
+                    0,
+                    out var outLen
+                );
+
+                Assert.AreEqual(reference.Length, outLen, testImage.Name);
+                Assert.AreEqual(reference, output[..outLen].ToArray(), testImage.Name);
+            }
+        }
     }
 }
