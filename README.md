@@ -1,3 +1,8 @@
+[![main](https://github.com/rkm/QOI.Net/actions/workflows/main.yml/badge.svg)](https://github.com/rkm/QOI.Net/actions/workflows/main.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/rkm/QOI.Net/main.svg)](https://results.pre-commit.ci/latest/github/rkm/QOI.Net/main)
+[![Nuget](https://img.shields.io/nuget/v/Rkm.QOI.Net)](https://www.nuget.org/packages/Rkm.QOI.Net)
+![GitHub](https://img.shields.io/github/license/rkm/QOI.Net)
+
 # QOI.Net
 
 A C# implementation of the [Quite OK Image Format](https://qoiformat.org/) for
