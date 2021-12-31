@@ -2,7 +2,7 @@
 <Project>
     <PropertyGroup>
         <Authors>rkm</Authors>
-        <Description>https://github.com/rkm/QOI.Net</Description>
+        <Description>A C# implementation of the Quite OK Image Format for Fast, Lossless Compression</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/rkm/QOI.Net</RepositoryUrl>
