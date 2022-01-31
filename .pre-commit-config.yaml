@@ -63,7 +63,7 @@ repos:
       - id: python-use-type-annotations
       - id: python-no-log-warn
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: "v2.6.0"
+    rev: "v2.7.1"
     hooks:
       - id: reorder-python-imports
         args: [--py36-plus]
@@ -88,7 +88,7 @@ repos:
       - id: mypy
         args: [--config-file, .meta/mypy.ini]
   - repo: https://github.com/psf/black
-    rev: "21.12b0"
+    rev: "22.1.0"
     hooks:
       - id: black
         language_version: python38
