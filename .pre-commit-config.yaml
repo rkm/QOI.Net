@@ -50,7 +50,7 @@ repos:
       - id: prettier
         args: [--config, .meta/prettierrc.yml]
   - repo: https://github.com/adrienverge/yamllint
-    rev: "v1.26.3"
+    rev: "v1.27.1"
     hooks:
       - id: yamllint
         args: [-c, .meta/yamllint.yaml]
@@ -63,7 +63,7 @@ repos:
       - id: python-use-type-annotations
       - id: python-no-log-warn
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: "v3.1.0"
+    rev: "v3.8.1"
     hooks:
       - id: reorder-python-imports
         args: [--py36-plus]
@@ -73,7 +73,7 @@ repos:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/asottile/pyupgrade
-    rev: "v2.34.0"
+    rev: "v2.37.1"
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -88,7 +88,7 @@ repos:
       - id: mypy
         args: [--config-file, .meta/mypy.ini]
   - repo: https://github.com/psf/black
-    rev: "22.3.0"
+    rev: "22.6.0"
     hooks:
       - id: black
         language_version: python38
