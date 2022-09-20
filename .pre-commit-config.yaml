@@ -50,7 +50,7 @@ repos:
       - id: prettier
         args: [--config, .meta/prettierrc.yml]
   - repo: https://github.com/adrienverge/yamllint
-    rev: "v1.27.1"
+    rev: "v1.28.0"
     hooks:
       - id: yamllint
         args: [-c, .meta/yamllint.yaml]
@@ -73,7 +73,7 @@ repos:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/asottile/pyupgrade
-    rev: "v2.37.3"
+    rev: "v2.38.0"
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -88,7 +88,7 @@ repos:
       - id: mypy
         args: [--config-file, .meta/mypy.ini]
   - repo: https://github.com/psf/black
-    rev: "22.6.0"
+    rev: "22.8.0"
     hooks:
       - id: black
         language_version: python38
