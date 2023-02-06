@@ -7,7 +7,6 @@ from PIL import Image
 
 
 def main() -> int:
-
     parser = argparse.ArgumentParser()
     parser.add_argument("input")
     parser.add_argument("width")
