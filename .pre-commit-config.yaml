@@ -32,7 +32,7 @@ repos:
       - id: nocommit
         exclude: .pre-commit-config.yaml
   - repo: https://github.com/codespell-project/codespell
-    rev: "v2.2.4"
+    rev: "v2.2.5"
     hooks:
       - id: codespell
         args:
@@ -50,7 +50,7 @@ repos:
       - id: prettier
         args: [--config, .meta/prettierrc.yml]
   - repo: https://github.com/adrienverge/yamllint
-    rev: "v1.31.0"
+    rev: "v1.32.0"
     hooks:
       - id: yamllint
         args: [-c, .meta/yamllint.yaml]
@@ -62,28 +62,28 @@ repos:
       - id: python-check-mock-methods
       - id: python-use-type-annotations
       - id: python-no-log-warn
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: "v3.9.0"
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: "v3.10.0"
     hooks:
       - id: reorder-python-imports
         args: [--py36-plus]
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: "v2.4.0"
+    rev: "v2.5.1"
     hooks:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/asottile/pyupgrade
-    rev: "v3.3.2"
+    rev: "v3.7.0"
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
   - repo: https://github.com/asottile/yesqa
-    rev: "v1.4.0"
+    rev: "v1.5.0"
     hooks:
       - id: yesqa
         additional_dependencies: [pep8-naming]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.2.0"
+    rev: "v1.3.0"
     hooks:
       - id: mypy
         args: [--config-file, .meta/mypy.ini]
