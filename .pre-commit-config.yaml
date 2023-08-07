@@ -45,7 +45,7 @@ repos:
             '\Whttps?://\S*',
           ]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.0"
+    rev: "v3.0.1"
     hooks:
       - id: prettier
         args: [--config, .meta/prettierrc.yml]
@@ -68,12 +68,12 @@ repos:
       - id: reorder-python-imports
         args: [--py36-plus]
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: "v3.0.0"
+    rev: "v3.0.1"
     hooks:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/asottile/pyupgrade
-    rev: "v3.9.0"
+    rev: "v3.10.1"
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -93,7 +93,7 @@ repos:
       - id: black
         language_version: python38
   - repo: https://github.com/PyCQA/flake8
-    rev: "6.0.0"
+    rev: "6.1.0"
     hooks:
       - id: flake8
         additional_dependencies:
