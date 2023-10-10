@@ -3,7 +3,7 @@ ci:
   skip: [dotnet-format]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: "v4.4.0"
+    rev: "v4.5.0"
     hooks:
       # General
       - id: check-added-large-files
@@ -32,7 +32,7 @@ repos:
       - id: nocommit
         exclude: .pre-commit-config.yaml
   - repo: https://github.com/codespell-project/codespell
-    rev: "v2.2.5"
+    rev: "v2.2.6"
     hooks:
       - id: codespell
         args:
@@ -63,7 +63,7 @@ repos:
       - id: python-use-type-annotations
       - id: python-no-log-warn
   - repo: https://github.com/asottile/reorder-python-imports
-    rev: "v3.11.0"
+    rev: "v3.12.0"
     hooks:
       - id: reorder-python-imports
         args: [--py36-plus]
@@ -73,7 +73,7 @@ repos:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/asottile/pyupgrade
-    rev: "v3.13.0"
+    rev: "v3.15.0"
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
